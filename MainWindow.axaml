@@ -1,0 +1,79 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:_4_3.ViewModels"
+        xmlns:views="using:_4_3.Views"
+        mc:Ignorable="d"
+        d:DesignWidth="700"
+        d:DesignHeight="500"
+        x:Class="_4_3.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="_4_3">
+
+
+	<Grid ShowGridLines = "True"
+		  RowDefinitions="30,*"
+		  ColumnDefinitions="2*,*">
+
+		<DockPanel Grid.Column="0"
+				   Grid.Row="0"
+				   DockPanel.Dock="Top"
+				   Grid.ColumnSpan="2"
+				   Background="Coral">
+			<TextBlock Margin="5"> Home </TextBlock>
+			<TextBlock Margin="5"> About </TextBlock>
+			<TextBlock Margin="5"> Topic 1 </TextBlock>
+			<TextBlock Margin="5"> Topic 2 </TextBlock>
+			<TextBlock Margin="5"> Topic 3 </TextBlock>
+			<TextBlock Margin="5"
+					   TextAlignment = "Right"
+					   DockPanel.Dock="Right"> RSS </TextBlock>
+		</DockPanel>
+
+		<DockPanel Grid.Column="0"
+				   Grid.Row="1">
+			<ListBox Background="Bisque" ItemsSource="{Binding BlogEntities}">
+				<ListBox.ItemTemplate>
+					<DataTemplate>
+						<StackPanel Background="Green">
+							<TextBlock Text ="{Binding Article}"/>
+							<TextBlock Text ="{Binding Text}"></TextBlock>
+							<!--<Image Source ="{Binding ImagePath, Converter={x:Static infrastructure:BitmapValueConverter.Instance}}"></Image>-->
+						</StackPanel>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+
+			</ListBox>
+
+			<!--нижнее меню-->
+			<DockPanel DockPanel.Dock="Bottom"
+					   Background="Crimson"
+					   MaxHeight="50">
+				<TextBlock DockPanel.Dock="Right" Margin="5"> Rate this article: 4/5  </TextBlock>
+			</DockPanel>
+
+
+
+		</DockPanel>
+
+
+
+		<!--правое поле-->
+		<ListBox Grid.Column="1"
+				 Grid.Row="1"
+				 Background="Yellow"
+                 ItemsSource="{Binding NewsEntities }">
+
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Background="Green">
+						<TextBlock Text ="{Binding Text}"></TextBlock>
+						<TextBlock Text ="{Binding PublishDate}"></TextBlock>
+						
+					</StackPanel>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+	</Grid>
+</Window>
