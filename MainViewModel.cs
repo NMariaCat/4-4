@@ -9,15 +9,15 @@ namespace _4_3.ViewModels;
 
 public class MainViewModel : ViewModelBase
 {
-    List<NewsEntity> newsEntities { get; set; }
-    List<BlogEntity> blogEntities { get; set; }
+    public List<NewsEntity> newsEntities { get; set; }
+    public List<BlogEntity> blogEntities { get; set; }
     public MainViewModel()
     {
         blogEntities = new List<BlogEntity>()
         {
-            new BlogEntity() { Text = "Программа должна компилироваться и правильно выполнять все требования", Article = "Article 1", ImagePath = "square.png", Tags = new List<string>{ "Tag1", "Tag2", "Tag3" } },
-            new BlogEntity() { Text = "Корректное и отражающее смысловую нагрузку именование переменных на английском языке", Article = "Article 2", ImagePath = "round.png", Tags = new List<string> { "Tag4", "Tag5", "Tag6" } },
-            new BlogEntity() { Text = "Корректно проставлены модификаторы уровня доступа для всех членов классов", Article = "Article 3", ImagePath = "triangle.png", Tags= new List<string>{ "Tag7", "Tag8", "Tag9" } }
+            new BlogEntity() { Text = "Программа должна компилироваться и правильно выполнять все требования", Article = "Article 1", ImagePath = "square.png", Tags = new List<string>{ "Tags: ","Tag 1 ", "Tag 2 ", "Tag 3" } },
+            new BlogEntity() { Text = "Корректное и отражающее смысловую нагрузку именование переменных на английском языке", Article = "Article 2", ImagePath = "round.png", Tags = new List<string> { "Tags: ","Tag 4 ", "Tag 5 ", "Tag 6" } },
+            new BlogEntity() { Text = "Корректно проставлены модификаторы уровня доступа для всех членов классов", Article = "Article 3", ImagePath = "triangle.png", Tags= new List<string>{ "Tags: ", "Tag 7 ", "Tag 8 ", "Tag 9 " } }
 
 
         };

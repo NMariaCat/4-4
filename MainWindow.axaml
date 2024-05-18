@@ -2,6 +2,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:infrastructure="using:_4_3.Infrastructure"
+
         xmlns:vm="using:_4_3.ViewModels"
         xmlns:views="using:_4_3.Views"
         mc:Ignorable="d"
@@ -11,6 +13,10 @@
         Icon="/Assets/avalonia-logo.ico"
         Title="_4_3">
 
+	<!--<Design.DataContext>
+		<vm:MainWindowViewModel/>
+	</Design.DataContext>-->
+	
 
 	<Grid ShowGridLines = "True"
 		  RowDefinitions="30,*"
@@ -31,45 +37,115 @@
 					   DockPanel.Dock="Right"> RSS </TextBlock>
 		</DockPanel>
 
-		<DockPanel Grid.Column="0"
+		<!--<DockPanel Grid.Column="0"
 				   Grid.Row="1">
-			<ListBox Background="Bisque" ItemsSource="{Binding BlogEntities}">
+			<ListBox DockPanel.Dock="Top"
+					 Background="Bisque" 
+					 ItemsSource="{Binding blogEntities}">
 				<ListBox.ItemTemplate>
 					<DataTemplate>
-						<StackPanel Background="Green">
+						<StackPanel Background="Pink">
 							<TextBlock Text ="{Binding Article}"/>
-							<TextBlock Text ="{Binding Text}"></TextBlock>
-							<!--<Image Source ="{Binding ImagePath, Converter={x:Static infrastructure:BitmapValueConverter.Instance}}"></Image>-->
+							<TextBlock Text ="{Binding Text}"/>
+							<Image Source="{Binding ImagePath, Converter={x:Static infrastructure:BitmapValueConverter.Instance}}" Width="600" Height="300"/>
+							<StackPanel Background="Green" Orientation="Horizontal">
+								<ListBox ItemsSource="{Binding Tags}">
+									<ListBox.ItemTemplate>
+										<DataTemplate>
+											<TextBlock Background="AliceBlue"
+													   TextWrapping="Wrap"
+													   HorizontalAlignment="Left">
+
+											</TextBlock>
+										</DataTemplate>
+									</ListBox.ItemTemplate>
+								</ListBox>
+							</StackPanel>
+							
 						</StackPanel>
 					</DataTemplate>
 				</ListBox.ItemTemplate>
 
 			</ListBox>
 
-			<!--нижнее меню-->
+			-->
+		<!--нижнее меню-->
+		<!--
 			<DockPanel DockPanel.Dock="Bottom"
 					   Background="Crimson"
-					   MaxHeight="50">
-				<TextBlock DockPanel.Dock="Right" Margin="5"> Rate this article: 4/5  </TextBlock>
+					   MaxHeight="50"
+					   MinHeight="40">
+				<TextBlock DockPanel.Dock="Left" Margin="5"> Rate this article: 4/5  </TextBlock>
+			</DockPanel>
+
+
+
+		</DockPanel>-->
+
+		
+		
+		<DockPanel Grid.Column="0"
+				   Grid.Row="1">
+			<ListBox DockPanel.Dock="Top"
+					 Background="Bisque" 
+					 ItemsSource="{Binding blogEntities}">
+				<ListBox.ItemTemplate>
+					<DataTemplate>
+						<StackPanel Background="Pink">
+							<TextBlock Text ="{Binding Article}"/>
+							<TextBlock Text ="{Binding Text}"/>
+							<Image Source="{Binding ImagePath, Converter={x:Static infrastructure:BitmapValueConverter.Instance}}" Width="600" Height="300"/>
+							<ItemsControl ItemsSource="{Binding Tags}">
+								<ItemsControl.ItemsPanel>
+									<ItemsPanelTemplate>
+										<StackPanel Orientation="Horizontal" />
+									</ItemsPanelTemplate>
+								</ItemsControl.ItemsPanel>
+							</ItemsControl>
+						</StackPanel>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+
+			</ListBox>
+
+			
+		<!--нижнее меню-->
+		
+			<DockPanel DockPanel.Dock="Bottom"
+					   Background="Crimson"
+					   MaxHeight="50"
+					   MinHeight="40">
+				<TextBlock  DockPanel.Dock="Left" > Rate this article: 4/5  </TextBlock>
 			</DockPanel>
 
 
 
 		</DockPanel>
 
-
-
 		<!--правое поле-->
 		<ListBox Grid.Column="1"
 				 Grid.Row="1"
 				 Background="Yellow"
-                 ItemsSource="{Binding NewsEntities }">
+                 ItemsSource="{Binding newsEntities}">
 
 			<ListBox.ItemTemplate>
 				<DataTemplate>
-					<StackPanel Background="Green">
-						<TextBlock Text ="{Binding Text}"></TextBlock>
-						<TextBlock Text ="{Binding PublishDate}"></TextBlock>
+					<StackPanel Background="Pink">
+						<TextBlock
+							TextWrapping="Wrap"
+							HorizontalAlignment="Right" 
+							Text ="{Binding Text}"></TextBlock>
+						<TextBlock 
+							HorizontalAlignment="Right"
+							TextWrapping="Wrap"
+							Text ="More"></TextBlock>
+
+						<TextBlock 
+							HorizontalAlignment="Right" 
+							Text ="{Binding PublishDate}">
+							TextWrapping="Wrap"
+
+						</TextBlock>
 						
 					</StackPanel>
 				</DataTemplate>

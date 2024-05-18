@@ -10,34 +10,34 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _4_3.Infrastructure;
+//namespace _4_3.Infrastructure;
 
-    public class BitmapValueConverter : IValueConverter
-{
-    public static BitmapValueConverter Instance = new BitmapValueConverter();
+//    public class BitmapValueConverter : IValueConverter
+//{
+//    public static BitmapValueConverter Instance = new BitmapValueConverter();
 
-    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-    {
-        if (value is string imagePath && targetType == typeof(IImage))
-        {
-            try
-            {
-                var prefix = $"avares://{Assembly.GetExecutingAssembly().GetName().Name}/Assets/";
-                var uri = new Uri(prefix + imagePath, UriKind.RelativeOrAbsolute);
-                var bitmap = new Bitmap(AssetLoader.Open(uri));
-                return bitmap;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-        }
-        throw new NotSupportedException();
-    }
+//    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+//    {
+//        if (value is string imagePath && targetType == typeof(IImage))
+//        {
+//            try
+//            {
+//                var prefix = $"avares://{Assembly.GetExecutingAssembly().GetName().Name}/Assets/";
+//                var uri = new Uri(prefix + imagePath, UriKind.RelativeOrAbsolute);
+//                var bitmap = new Bitmap(AssetLoader.Open(uri));
+//                return bitmap;
+//            }
+//            catch (Exception ex)
+//            {
+//                Console.WriteLine(ex.Message);
+//            }
+//        }
+//        throw new NotSupportedException();
+//    }
 
-    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-    {
-        throw new NotSupportedException();
-    }
-}
+//    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+//    {
+//        throw new NotSupportedException();
+//    }
+//}
 
